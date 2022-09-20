@@ -9,10 +9,11 @@ const Calculator = () => {
         setOutput('');
     };
 
-    const numClick = () => {
-
+    const numClick = (num) => {
+        setOutput(num);
     };
-    const operatorClick = () => {
+    const operatorClick = (op) => {
+        setOutput(op);
 
     };
     return (<div className='calc'>
