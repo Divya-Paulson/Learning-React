@@ -1,7 +1,7 @@
 import React from 'react';
 import Row from './Row';
 import './Keypad.css';
-const Keypad = ({ onNumClicked, onOperatorClicked, onReset }) => {
+const Keypad = ({ onNumClicked, onOperatorClicked, onReset, onEqual }) => {
 
     const setNum = (num) => () => {
         onNumClicked(num);
@@ -11,6 +11,10 @@ const Keypad = ({ onNumClicked, onOperatorClicked, onReset }) => {
     const setOperator = (op) => () => {
         onOperatorClicked(op)
     }
+    const setEqual = (eq) => () => {
+        onEqual(eq)
+    }
+
     return (
         <div className='keypad'>
             <Row >
@@ -40,7 +44,7 @@ const Keypad = ({ onNumClicked, onOperatorClicked, onReset }) => {
                 <button onClick={ setOperator('.') }>.</button>
                 <button onClick={ setNum(0) }>0</button>
                 <button onClick={ setOperator('+') }>+</button>
-                <button onClick={ setOperator('=') }>=</button>
+                <button onClick={ setEqual('=') }>=</button>
             </Row>
 
 
