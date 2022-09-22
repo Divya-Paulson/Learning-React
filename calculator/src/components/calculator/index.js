@@ -43,6 +43,10 @@ const Calculator = () => {
         } else if (calcState === Operand2) {
             currentNum = num2;
             setFn = setNum2;
+        } else if (calcState === Operator) {
+            currentNum = 0;
+            setCalcState(Operand1);
+            setFn = setNum1;
         }
         currentNum = (currentNum * 10) + num;
         setFn(currentNum);
@@ -51,11 +55,14 @@ const Calculator = () => {
             newOutput = currentNum;
         } else if (calcState == Operand2) {
             newOutput = `${num1} ${operator} ${currentNum}`
+        } else if (calcState == Operator) {
+            newOutput = currentNum;
         }
         setOutput(newOutput);
     };
     const operatorClick = (op) => {
         setOperator(op);
+
         setCalcState(Operand2);
         let newOutput = `${num1} ${op}`;
         setOutput(newOutput);
@@ -71,7 +78,12 @@ const Calculator = () => {
             newOutput = num1 * num2;
         else if (operator === '/')
             newOutput = num1 / num2;
+
         setOutput(newOutput);
+        setCalcState(Operator);
+        setNum1(newOutput);
+        setNum2(0);
+        setOperator('');
 
     };
     return (<div className='calc'>
